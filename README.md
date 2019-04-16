@@ -22,3 +22,9 @@ Unlike the local application, the manager resides on EC2 node. It's main purpose
 7. Send message to local application via SQS queue that indicates the end of OCR process.
 
 # Worker
+Similarly to the manager, this process resides on EC2 node as follows:
+1. Obtain link to an image via SQS queue and download the image.
+2. Initiate OCR algorithm on the image.
+3. Notify the manager of the text exctracted from the image.
+4. Remove the image from SQS queue.
+5. Repeat the process.
