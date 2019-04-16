@@ -12,3 +12,13 @@ This application starts working on your local machine (not AWS cloud) as follows
 5. Download `MrManagerOutput.html` file from S3, the file contains images with ORC output.
 
 # Manager
+Unlike the local application, the manager resides on EC2 node. It's main purpose is to initialize the workers and controling their work via SQS messages and S3 buckets:
+1. Receive message from local application via SQS.
+2. Download `links.txt` from S3 bucket.
+3. Send each link from `links.txt` file to SQS queue.
+4. Create worker for every n messages.
+5. Wait for workers to finish their job, terminate the workers when theyr done.
+6. Read all messages from the results queue, create and upload `MrManagerOutput.html` to S3 bucket.
+7. Send message to local application via SQS queue that indicates the end of OCR process.
+
+# Worker
