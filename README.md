@@ -28,3 +28,11 @@ Similarly to the manager, this process resides on EC2 node as follows:
 3. Notify the manager of the text exctracted from the image.
 4. Remove the image from SQS queue.
 5. Repeat the process.
+
+# How to use
+1. In order to use AWS cloud [register here](https://aws.amazon.com)
+2. Download and install [Java SDK](https://aws.amazon.com/sdk-for-java/)
+3. Create a project with provided `.java` files from this repository.
+4. Export each `.java` file as `.jar`.
+5. Create S3 bucket named "shleem" and upload `MrManager.jar` & `Worker.jar` to this bucket.
+6. ```java -jar yourjar.jar inputFileName n``` for example: ```java -jar Local.jar links.txt 10```
